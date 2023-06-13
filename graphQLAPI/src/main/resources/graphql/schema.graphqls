@@ -3,7 +3,15 @@ type Query{
     getPersonByID(id: ID!): Author!
 }
 
+type Mutation{
+    addPerson(authorIn: AuthorInput!): Author!
+}
+
 type Author{
+    id: ID,
+    name: String
+}
+input AuthorInput{
     id: ID,
     name: String
 }
