@@ -5,13 +5,26 @@ type Query{
 
 type Mutation{
     addPerson(authorIn: AuthorInput!): Author!
+    addBook(bookIn:BookIn!):Book!
+}
+
+type Book{
+    id:ID,
+    name:String,
+}
+
+input BookIn{
+    id:ID,
+    name:String,
 }
 
 type Author{
     id: ID,
     name: String
+    books:[Book]
 }
 input AuthorInput{
     id: ID,
     name: String
+    books:[BookIn]
 }

@@ -1,6 +1,7 @@
 package com.ofu.graphQLAPI.controller;
 
 
+import com.ofu.graphQLAPI.model.Book;
 import com.ofu.graphQLAPI.service.GraphQLRepository;
 import com.ofu.graphQLAPI.model.Author;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -8,6 +9,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,14 +32,23 @@ public class Api {
     }
 
     @MutationMapping
-    public Author addPerson(@Argument Input authorIn){
+    public Author addPerson(@Argument AuthorIn authorIn){
         Author aut = new Author();
         aut.setId(authorIn.id);
         aut.setName(authorIn.name);
+        List<Book> books = new ArrayList<>();
+        for(BookIn in: authorIn.books){
+            Book book =new Book();
+            book.setID(in.id);
+            book.setName(in.name);
+            books.add(book);
+        }
+        aut.setBooks(books);
         repo.save(aut);
         return aut;
     }
 
-    record Input(int id,String name){}
+    record AuthorIn(int id, String name, List<BookIn> books){}
+    record BookIn (int id, String name){}
 
 }
