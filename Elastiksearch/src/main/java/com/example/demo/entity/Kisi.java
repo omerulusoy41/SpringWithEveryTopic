@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.Date;
 
-@Document(indexName = "kisiler",)
+@Document(indexName = "kisiler")
 public class Kisi {
 
     @Id
