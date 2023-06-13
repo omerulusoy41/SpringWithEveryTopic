@@ -3,10 +3,12 @@ package com.ofu.graphQLAPI.controller;
 
 import com.ofu.graphQLAPI.service.GraphQLRepository;
 import com.ofu.graphQLAPI.model.Author;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class Api {
@@ -21,4 +23,8 @@ public class Api {
         return repo.findAll();
     }
 
+    @QueryMapping
+    public Optional<Author> getPersonByID(@Argument Long id){
+        return repo.findById(id);
+    }
 }
