@@ -5,17 +5,20 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import java.util.Date;
 
-@Document(indexName = "kisiler")
+@Document(indexName = "Kisi")
 public class Kisi {
 
     @Id
     private String id;
-    @Field(name = "ad",type = FieldType.Text)
+    @Field(name = "name",type = FieldType.Text)
     private String name;
-    @Field(name = "adres",type = FieldType.Text)
+    @Field(name = "adress",type = FieldType.Text)
     private String adress;
-    @Field(name = "dtarihi",type = FieldType.Date)
-    private Date dtarihi;
+
+
+    public Kisi(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
