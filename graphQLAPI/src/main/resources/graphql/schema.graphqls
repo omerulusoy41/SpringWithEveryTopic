@@ -1,0 +1,8 @@
+type Query{
+    getAllPerson: [Author!]!
+}
+
+type Author{
+    id: ID,
+    name: String
+}
