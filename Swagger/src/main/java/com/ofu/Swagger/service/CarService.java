@@ -22,8 +22,12 @@ public class CarService {
         return repo.findAll();
     }
 
-    public Car create(Car car) {
+    public Car create1(Car car) {
         repo.save(car);
+        return car;
+    }
+    public Car create2(Car car) {
+        repo.insertCar(car.getID(),car.getName());
         return car;
     }
 
@@ -32,5 +36,10 @@ public class CarService {
     }
     public List<Car> getCarWithName(String name) {
         return  repo.getByCarAndName(name);
+    }
+
+    public List<Car> updateName(long id, String newName) {
+        repo.updateCarName(id,newName);
+        return getCarWithName(newName);
     }
 }

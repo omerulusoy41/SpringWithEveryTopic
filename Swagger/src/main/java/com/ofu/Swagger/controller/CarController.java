@@ -20,10 +20,10 @@ public class CarController{
     @Autowired
     private CarService service;
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Car> getFindByID(@PathVariable long id){
-//        return ResponseEntity.ok(service.getCarByID(id).orElse(null));
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Car> getFindByID(@PathVariable long id){
+        return ResponseEntity.ok(service.getCarByID(id).orElse(null));
+    }
     @GetMapping("/{name}")
     public ResponseEntity<List<String>> getFindByName(@PathVariable String name){
         return ResponseEntity.ok(service.getCarByName(name));
@@ -38,14 +38,25 @@ public class CarController{
         return ResponseEntity.ok(service.getCarAll());
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Car> getAll(@RequestBody Car car){
-        return ResponseEntity.ok(service.create(car));
+    @PostMapping("/create1")
+    public ResponseEntity<Car> create(@RequestBody Car car){
+        return ResponseEntity.ok(service.create1(car));
     }
 
     @PutMapping("/update")
     public ResponseEntity<Car> update(@RequestBody Car car) {
-        return ResponseEntity.ok(service.create(car));
+        return ResponseEntity.ok(service.create1(car));
+    }
+
+    @PutMapping("/update/{id}/{newName}")
+    public ResponseEntity<List<Car>> update(@PathVariable("id") String id,@PathVariable("newName") String newName)
+    {
+        return ResponseEntity.ok(service.updateName(Integer.parseInt(id),newName));
+    }
+
+    @PostMapping("/create2")
+    public ResponseEntity<Car> create2(@RequestBody Car car){
+        return ResponseEntity.ok(service.create2(car));
     }
 
 }
