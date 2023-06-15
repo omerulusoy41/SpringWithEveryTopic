@@ -26,4 +26,11 @@ public class CarService {
         repo.save(car);
         return car;
     }
+
+    public List<String> getCarByName(String name) {
+        return  repo.getByName(name);
+    }
+    public List<Car> getCarWithName(String name) {
+        return  repo.getByCarAndName(name);
+    }
 }

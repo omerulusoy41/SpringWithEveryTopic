@@ -6,11 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "Car")
 public class Car {
         @Id
         @Column(name = "id")
         public long ID;
+
         @Column (name = "name")
         public String name;
 }
