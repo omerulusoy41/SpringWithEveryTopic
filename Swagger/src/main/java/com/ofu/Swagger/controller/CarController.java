@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin("*")
 public class CarController{
 
     @Autowired
@@ -19,7 +20,7 @@ public class CarController{
     public ResponseEntity<Car> getFindByID(@PathVariable long id){
         return ResponseEntity.ok(service.getCarByID(id).orElse(null));
     }
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<String>> getFindByName(@PathVariable String name){
         return ResponseEntity.ok(service.getCarByName(name));
     }
