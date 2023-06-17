@@ -1,0 +1,23 @@
+#server.port = 8081
+#spring.application.name=h2-db
+#spring.jpa.defer-datasource-initialization=true
+#spring.h2.console.enabled=true
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=123
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+server:
+    port: 8081
+spring:
+    application:
+        name: h2-Service
+    h2:
+        console.enabled: true
+    datasource:
+        url: jdbc:h2:mem:mydb
+        username: sa
+        password: 123
+        driverClassName: org.h2.Driver
+    jpa:
+        spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
