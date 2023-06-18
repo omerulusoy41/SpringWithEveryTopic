@@ -2,6 +2,7 @@ package com.ofu.SpringwithMikroservices.controller;
 
 import com.ofu.SpringwithMikroservices.model.Person;
 import com.ofu.SpringwithMikroservices.service.PersonDBService;
+import com.ofu.SpringwithMikroservices.service.PersonQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,12 @@ public class PersonController {
     @Autowired
     private PersonDBService service;
 
+    @Autowired
+    private PersonQueue rabbitQueue;
+
     @GetMapping
     public ResponseEntity<List<Person>> getAll(){
+        rabbitQueue.sendMessage("in getAll() method..");
         return  ResponseEntity.ok(service.getAll());
     }
 }
